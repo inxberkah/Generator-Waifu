@@ -1,4 +1,5 @@
 import requests
+import os
 
 #####################################################
 ## Author: https://github.com/inxberkah
@@ -12,7 +13,6 @@ def download_waifu_image():
 
     if response.status_code == 200:
         data = response.json()
-
         url_data = data['apiResult']['url'][0]
 
         png_response = requests.get(url_data)
@@ -73,18 +73,33 @@ def get_random_anime_data():
     else:
         print("Failed to retrieve data from the API.")
 
-print("Silahkan pilih:")
-print("1. Auto Download Waifu Image")
-print("2. Random Quote Anime")
-print("3. Random Anime Data")
+while True:
+    print("Silahkan Pilih:")
+    print("1. Auto Download Waifu Image")
+    print("2. Random Quote Anime")
+    print("3. Random Anime Data")
+    print("4. Exit")
 
-choice = input("Enter your choice (1-3): ")
+    choice = input("Enter your choice (1-4): ")
 
-if choice == "1":
-    download_waifu_image()
-elif choice == "2":
-    get_quote_data()
-elif choice == "3":
-    get_random_anime_data()
-else:
-    print("Invalid choice.")
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+    if choice == "1":
+        download_waifu_image()
+    elif choice == "2":
+        get_quote_data()
+    elif choice == "3":
+        get_random_anime_data()
+    elif choice == "4":
+        print("Exiting the program...")
+        break
+    else:
+        print("Invalid choice.")
+
+    print()
+    continue_choice = input("Do you want to continue? (y/n): ")
+    if continue_choice.lower() != "y":
+        print("Exiting the program...")
+        break
+    else:
+        os.system('cls' if os.name == 'nt' else 'clear')
