@@ -2,5 +2,4 @@
 
 How to run?
 
-pip install requests
-python run.py
+python ryn.py
